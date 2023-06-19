@@ -1,0 +1,66 @@
+# R 언어 버전
+# 패키지 설치 및 로드
+install.packages('readxl')
+library(readxl)
+
+# 엑셀 파일 로드 및 확인
+month2019 <- read.csv("C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2019.csv", fileEncoding = "euc-kr")
+month2020 <- read.csv("C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2020.csv", fileEncoding = "euc-kr")
+month2021 <- read.csv("C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2021.csv", fileEncoding = "euc-kr")
+View(month2019)
+View(month2020)
+View(month2021)
+
+# 데이터 레이블에서 원하는 항목만을 추출
+month2019_1 <- month2019[,c("금액", "X25.29세")] 
+month2019_2 <- month2019[,c("금액", "X30.34세")] 
+month2020_1 <- month2020[,c("금액", "X25.29세")] 
+month2020_2 <- month2020[,c("금액", "X30.34세")] 
+month2021_1 <- month2021[,c("금액", "X25.29세")] 
+month2021_2 <- month2021[,c("금액", "X30.34세")] 
+
+View(month2019_1)
+View(month2019_2)
+View(month2020_1)
+View(month2020_2)
+View(month2021_1)
+View(month2021_2)
+
+# 막대그래프 데이터레이블 넣는 준비
+mm2019_1=month2019_1$X25.29세
+mm2019_2=month2019_2$X30.34세
+mm2020_1=month2020_1$X25.29세
+mm2020_2=month2020_2$X30.34세
+mm2021_1=month2021_1$X25.29세
+mm2021_2=month2021_2$X30.34세
+
+mattt2019_1=matrix(mm2019_1, nrow = 30)
+mattt2019_2=matrix(mm2019_2, nrow = 30)
+mattt2020_1=matrix(mm2020_1, nrow = 30)
+mattt2020_2=matrix(mm2020_2, nrow = 30)
+mattt2021_1=matrix(mm2021_1, nrow = 30)
+mattt2021_2=matrix(mm2021_2, nrow = 30)
+
+# 2019년-25~29세
+mm2019_1_1=barplot(mattt2019_1, as.matrix(month2019_1[1:30, 2:2]), main=paste("2019년기준월소득액"), xlab="25~29세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2019_1$금액), fill=c(rainbow(30)), cex=0.7) # 범례
+
+# 2019년-30~34세
+mm2019_1_2=barplot(mattt2019_2, as.matrix(month2019_2[1:30, 2:2]), main=paste("2019년기준월소득액"), xlab="30~34세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2019_2$금액), fill=c(rainbow(30)), cex=0.7) # 범례
+
+# 2020년-25~29세
+mm2020_1_1=barplot(mattt2020_1, as.matrix(month2020_1[1:30, 2:2]), main=paste("2020년기준월소득액"), xlab="25~29세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2020_1$금액), fill=c(rainbow(30)), cex=0.7) # 범례
+
+# 2020년-30~34세
+mm2020_1_2=barplot(mattt2020_2, as.matrix(month2020_2[1:30, 2:2]), main=paste("2020년기준월소득액"), xlab="30~34세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2020_2$금액), fill=c(rainbow(30)), cex=0.7) # 범례
+
+# 2021년-25~29세
+mm2021_1_1=barplot(mattt2021_1, as.matrix(month2021_1[1:30, 2:2]), main=paste("2021년기준월소득액"), xlab="25~29세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2021_1$금액), fill=c(rainbow(30)), cex=0.7) # 범례
+
+# 2021년-30~34세
+mm2021_1_2=barplot(mattt2021_2, as.matrix(month2021_2[1:30, 2:2]), main=paste("2021년기준월소득액"), xlab="30~34세", ylab="단위 : 만 명", beside=T, col=rainbow(30), ylim=c(0, 30),cex.main=1.5,cex.lab=1.5, space=2, width=1.0, cex.names = 0.8) # barplot
+legend("topright", legend=c(month2021_2$금액), fill=c(rainbow(30)), cex=0.7) # 범례
