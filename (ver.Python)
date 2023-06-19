@@ -1,0 +1,155 @@
+# Python 언어 버전
+# 패키지 로드 및 엑셀 파일 로드
+import pandas as pd
+import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "NanumGothic"
+month2019 = pd.read_csv('C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2019.csv', encoding='euc-kr')
+month2019
+
+# 2019년 25~29세
+month2019_1 = month2019.iloc[:30, :2] # slicing, 2019년 25~29세 항목 분리
+month2019_1
+
+# 2019년 30~34세
+month2019_2 = month2019.loc[:30, ['금액', '30~34세']] # slicing, 2019년 30~34세 항목 분리
+month2019_2
+
+# 2019년 25~29세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2019_1)) # color 설정
+mm2019_1 = plt.bar(month2019_1['금액'], month2019_1['25~29세'], color=colors) # 막대그래프
+
+for rect in mm2019_1: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2019년 기준 월 소득액(25~29세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2019_1
+plt.legend(handles=mm2019_1,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2019_1 # 출력
+
+# 2019년 30~34세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2019_2)) # color 설정
+mm2019_2 = plt.bar(month2019_2['금액'], month2019_2['30~34세'], color=colors) # 막대그래프
+
+for rect in mm2019_2: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2019년 기준 월 소득액(30~34세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2019_2
+plt.legend(handles=mm2019_2,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2019_2 # 출력
+
+# 2020년 메인 데이터 불러오기
+plt.rcParams["font.family"] = "NanumGothic"
+month2020 = pd.read_csv('C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2020.csv', encoding='euc-kr')
+month2020
+
+# 2020년 25~29세
+month2020_1 = month2020.iloc[:30, :2] # slicing, 2020년 25~29세 항목 분리
+month2020_1
+
+# 2020년 30~34세
+month2020_2 = month2020.loc[:30, ['금액', '30~34세']] # slicing, 2020년 30~34세 항목 분리
+month2020_2
+
+# 2020년 25~29세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2020_1)) # color 설정
+mm2020_1 = plt.bar(month2020_1['금액'], month2020_1['25~29세'], color=colors) # 막대그래프
+
+for rect in mm2020_1: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2020년 기준 월 소득액(25~29세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2020_1
+plt.legend(handles=mm2020_1,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2020_1 # 출력
+
+# 2020년 30~34세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2020_2)) # color 설정
+mm2020_2 = plt.bar(month2020_2['금액'], month2020_2['30~34세'], color=colors) # 막대그래프
+
+for rect in mm2020_2: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2020년 기준 월 소득액(30~34세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2020_2
+plt.legend(handles=mm2020_2,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2020_2 # 출력
+
+# 2021년 메인 데이터 불러오기
+plt.rcParams["font.family"] = "NanumGothic"
+month2021 = pd.read_csv('C:/Study/Data/기준소득월액_구간별·연령별_가입자_현황_총괄__2021.csv', encoding='euc-kr')
+month2021
+
+# 2021년 25~29세
+month2021_1 = month2021.iloc[:30, :2] # slicing, 2021년 25~29세 항목 분리
+month2021_1
+
+# 2021년 30~34세
+month2021_2 = month2021.loc[:30, ['금액', '30~34세']] # slicing, 2021년 30~34세 항목 분리
+month2021_2
+
+# 2021년 25~29세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2021_1)) # color 설정
+mm2021_1 = plt.bar(month2021_1['금액'], month2021_1['25~29세'], color=colors) # 막대그래프
+
+for rect in mm2021_1: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2021년 기준 월 소득액(25~29세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2021_1
+plt.legend(handles=mm2021_1,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2021_1 # 출력
+
+# 2021년 30~34세 항목 그래프
+import seaborn as sns
+      
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(month2021_2)) # color 설정
+mm2021_2 = plt.bar(month2021_2['금액'], month2021_2['30~34세'], color=colors) # 막대그래프
+
+for rect in mm2021_2: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+
+plt.title('2021년 기준 월 소득액(30~34세)', fontsize=25) # title
+plt.xlabel('월 소득 단위',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만 명', fontsize=25, labelpad=20) # y축 제목
+plt.xticks(fontsize=10) # x축 레이블 글씨 사이즈
+job_list = month2021_2
+plt.legend(handles=mm2021_2,labels=list(job_list['금액']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+mm2021_2 # 출력
